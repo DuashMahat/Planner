@@ -9,13 +9,35 @@
 import UIKit
 
 class PlannerViewController: UITableViewController {
-    let array = ["Duale" , "Mahat" , "Abdullahi" , "Adan" , "Bahdon" , "Mussa" , "Abikar" , "Adan" , "Bahdon"]
+    var array = ["Duale" , "Mahat" , "Abdullahi" , "Adan" , "Bahdon" , "Mussa" , "Abikar" , "Adan" , "Bahdon"]
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
 
-
+    @IBAction func addNewPlan(_ sender: UIBarButtonItem) {
+        // for you to create an alert :
+        // u need an alert
+        // then an action
+        var texfield = UITextField()
+        let alert = UIAlertController(title: "Add New Plan", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add Plan", style: .default) { (action) in
+            // What happen when the user clicks an alert
+            self.array.append(texfield.text!)
+            DispatchQueue.main.async {
+                 self.tableView.reloadData()
+            }
+          
+        }
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter A Plan"
+            texfield = alertTextField
+        }
+        alert.addAction(action)
+        present(alert , animated: true , completion: nil)
+        
+    }
+    
 }
 
 extension PlannerViewController {

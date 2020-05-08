@@ -29,7 +29,14 @@
                             <outlet property="delegate" destination="bUd-pl-d52" id="L0T-Pw-P83"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Planner" id="5uH-gb-SPJ"/>
+                    <navigationItem key="navigationItem" title="Planner" id="5uH-gb-SPJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wUh-NS-PC4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addNewPlan:" destination="bUd-pl-d52" id="UMV-k3-RXf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KeI-rj-7Pz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
