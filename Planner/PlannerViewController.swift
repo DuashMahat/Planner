@@ -10,8 +10,16 @@ import UIKit
 
 class PlannerViewController: UITableViewController {
     var array = ["Duale" , "Mahat" , "Abdullahi" , "Adan" , "Bahdon" , "Mussa" , "Abikar" , "Adan" , "Bahdon"]
+    
+    /* USER DEFAULTS */
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         /* USER DEFAULTS SET THIS ARRAY TO THE ARRAY IN OUR PLANNER   */
+        if let arrays  = defaults.array(forKey: "PlanningLists") as? [String] {
+            array = arrays
+        }
     }
 
 
@@ -24,6 +32,8 @@ class PlannerViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Plan", style: .default) { (action) in
             // What happen when the user clicks an alert
             self.array.append(texfield.text!)
+             /* USER DEFAULTS SAVING THINGS IN USER DEFAULTS */
+            self.defaults.set(self.array, forKey: "PlanningLists")
             DispatchQueue.main.async {
                  self.tableView.reloadData()
             }
