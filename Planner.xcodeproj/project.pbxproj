@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE4BD40A24651F6C002F9DD8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4BD40924651F6C002F9DD8 /* Item.swift */; };
 		EE9103212464F6D700B31A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9103202464F6D700B31A6C /* AppDelegate.swift */; };
 		EE9103232464F6D700B31A6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9103222464F6D700B31A6C /* SceneDelegate.swift */; };
 		EE9103252464F6D700B31A6C /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9103242464F6D700B31A6C /* PlannerViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE4BD40924651F6C002F9DD8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EE91031D2464F6D700B31A6C /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE9103202464F6D700B31A6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE9103222464F6D700B31A6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE4BD40824651F4E002F9DD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE4BD40924651F6C002F9DD8 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EE9103142464F6D700B31A6C = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		EE91031F2464F6D700B31A6C /* Planner */ = {
 			isa = PBXGroup;
 			children = (
+				EE4BD40824651F4E002F9DD8 /* Model */,
 				EE9103202464F6D700B31A6C /* AppDelegate.swift */,
 				EE9103222464F6D700B31A6C /* SceneDelegate.swift */,
 				EE9103242464F6D700B31A6C /* PlannerViewController.swift */,
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4BD40A24651F6C002F9DD8 /* Item.swift in Sources */,
 				EE9103252464F6D700B31A6C /* PlannerViewController.swift in Sources */,
 				EE9103212464F6D700B31A6C /* AppDelegate.swift in Sources */,
 				EE9103232464F6D700B31A6C /* SceneDelegate.swift in Sources */,
