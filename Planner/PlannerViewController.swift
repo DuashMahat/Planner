@@ -12,34 +12,24 @@ class PlannerViewController: UITableViewController {
     var array : [Item] = []
     
     /* USER DEFAULTS */
-    let defaults = UserDefaults.standard
+//    let defaults = UserDefaults.standard
+    let filepath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("plans.plist")
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        print(filepath)
          /* USER DEFAULTS SET THIS ARRAY TO THE ARRAY IN OUR PLANNER
             you can also have
                defaults.float
           defaults.string etc 
            
          */
-        let item1 = Item()
-        item1.title = "Duale"
-        array.append(item1)
+       
+//       if let arrays  = defaults.array(forKey: "PlanningLists") as? [Item] {
+//         array = arrays
+//      }
         
-        let item2 = Item()
-               item2.title = "Bahdon"
-               array.append(item2)
-        
-        let item3 = Item()
-               item3.title = "Abdullahi"
-               array.append(item3)
-        
-        let item4 = Item()
-               item4.title = "Mahat"
-               array.append(item4)
-       if let arrays  = defaults.array(forKey: "PlanningLists") as? [Item] {
-         array = arrays
-      }
+       loadItems()
     }
 
 
@@ -48,18 +38,23 @@ class PlannerViewController: UITableViewController {
         // u need an alert
         // then an action
         var texfield = UITextField()
-        let alert = UIAlertController(title: "Add New Plan", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Plan", message: "Add Duale", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Plan", style: .default) { (action) in
             // What happen when the user clicks an alert
             let newItem = Item()
             newItem.title = texfield.text!
             self.array.append(newItem)
              /* USER DEFAULTS SAVING THINGS IN USER DEFAULTS */
-            self.defaults.set(self.array, forKey: "PlanningLists")
-            DispatchQueue.main.async {
-                 self.tableView.reloadData()
-            }
-          
+//            self.defaults.set(self.array, forKey: "PlanningLists")
+//            let encoder = PropertyListEncoder()
+//            do {
+//                let data =  try encoder.encode(self.array)
+//                try data.write(to: self.filepath!)
+//            } catch {
+//                print ("Error")
+//            }
+           
+            self.saveData()
         }
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Enter A Plan"
@@ -99,10 +94,37 @@ extension PlannerViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         array[indexPath.row].done = !array[indexPath.row].done
-        DispatchQueue.main.async {
-            tableView.reloadData()
-        }
+        saveData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+
+extension PlannerViewController {
+    func saveData() {
+        let encoder = PropertyListEncoder()
+                   do {
+                       let data =  try encoder.encode(array)
+                       try data.write(to: filepath!)
+                   } catch {
+                       print ("Error")
+        }
+        DispatchQueue.main.async {
+                        self.tableView.reloadData()
+        }
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: filepath!) {
+            let decoder = PropertyListDecoder()
+            do {
+              array = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error ")
+            }
+           
+        }
+    }
+    
 }
 
